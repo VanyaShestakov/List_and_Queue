@@ -97,6 +97,11 @@ public class List<T> {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        return 31 * this.toString().hashCode();
+    }
+
     public T get(int index) {
         Node<T> current = head;
         while (current != null && index != current.index) {

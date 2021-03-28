@@ -1,6 +1,8 @@
 package MyList;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -153,6 +155,35 @@ class ListTest {
         Assertions.assertFalse(firstList.equals(otherList));
         secondList.removeAt(2);
         Assertions.assertFalse(firstList.equals(secondList));
+    }
+
+    @Test
+    void hashCodeTest() {
+        List<Integer> firstList = new List<>();
+        List<Integer> secondList = new List<>();
+        List<Integer> otherList = new List<>();
+        LinkedList<Integer> otherClassObj = new LinkedList<>();
+
+        firstList.add(1);
+        firstList.add(2);
+        firstList.add(3);
+
+        secondList.add(1);
+        secondList.add(2);
+        secondList.add(3);
+
+        otherClassObj.add(1);
+        otherClassObj.add(2);
+        otherClassObj.add(3);
+
+        otherList.add(3);
+        otherList.add(2);
+        otherList.add(1);
+
+        Assertions.assertEquals(firstList.hashCode(), secondList.hashCode());
+        Assertions.assertEquals(firstList.hashCode(), secondList.hashCode());
+        Assertions.assertNotEquals(firstList.hashCode(), otherList.hashCode());
+        Assertions.assertNotEquals(firstList.hashCode(), otherClassObj.hashCode());
 
     }
 }
