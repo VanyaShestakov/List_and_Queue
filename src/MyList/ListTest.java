@@ -2,6 +2,8 @@ package MyList;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.LinkedList;
 import java.util.Optional;
 
 class ListTest {
@@ -119,5 +121,38 @@ class ListTest {
         }
         String expectedStr = "{1 -> 2 -> 3 -> 4}";
         Assertions.assertEquals(expectedStr, list.toString());
+    }
+
+    @Test
+    void equalsTest() {
+        List<Integer> firstList = new List<>();
+        List<Integer> secondList = new List<>();
+        List<Integer> otherList = new List<>();
+        LinkedList<Integer> otherClassObj = new LinkedList<>();
+
+        firstList.add(1);
+        firstList.add(2);
+        firstList.add(3);
+
+        secondList.add(1);
+        secondList.add(2);
+        secondList.add(3);
+
+        otherClassObj.add(1);
+        otherClassObj.add(2);
+        otherClassObj.add(3);
+
+        otherList.add(3);
+        otherList.add(2);
+        otherList.add(1);
+
+        Assertions.assertTrue(firstList.equals(secondList));
+        Assertions.assertTrue(firstList.equals(firstList));
+        Assertions.assertFalse(firstList.equals(null));
+        Assertions.assertFalse(firstList.equals(otherClassObj));
+        Assertions.assertFalse(firstList.equals(otherList));
+        secondList.removeAt(2);
+        Assertions.assertFalse(firstList.equals(secondList));
+
     }
 }
