@@ -26,7 +26,7 @@ public class Queue <T>{
             size--;
             return returnedItem;
         } else {
-            return null;
+            throw new QueueIsEmptyException();
         }
     }
 

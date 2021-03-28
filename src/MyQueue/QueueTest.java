@@ -24,7 +24,7 @@ class QueueTest {
     @Test
     void pollTest() {
         Queue<Integer> queue = new Queue<>();
-        Assertions.assertNull(queue.poll());
+        Assertions.assertThrows(QueueIsEmptyException.class, () -> queue.poll());
         for (int i = MIN_VALUE; i <= MAX_VALUE; i++) {
             queue.push(i);
         }

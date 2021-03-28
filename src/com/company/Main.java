@@ -5,10 +5,6 @@ import MyQueue.Queue;
 import java.io.*;
 import java.util.*;
 
-
-//^(\{(\-?\d+\s?)+\})+$
-//^(\-?\d+\s?;?)+$
-
 public class Main {
     static Scanner sysScan = new Scanner(System.in);
     static List<Queue<List<Integer>>> mainList;
