@@ -77,6 +77,26 @@ public class List<T> {
         return listStr.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        List<T> list = (List<T>) o;
+        if (this.size != list.size) {
+            return false;
+        }
+        for (int i = 0; i < list.size; i++) {
+            if (!this.get(i).equals(list.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public T get(int index) {
         Node<T> current = head;
         while (current != null && index != current.index) {
