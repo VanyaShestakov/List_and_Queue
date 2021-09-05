@@ -46,10 +46,25 @@ public class DoublyLinkedList<T> {
             next.previous = previous;
             current.next = null;
         }
-
+        changeIndices();
+        size--;
     }
 
-    private void changeIndices(Node<T> current, int index) {
+    public T get(int index) {
+        Node<T> current = head;
+        if (index + 1 > size || index < 0) {
+            throw new IndexOutOfBoundsException(index);
+        }
+        while (index != current.index) {
+            current = current.next;
+        }
+
+        return current.value;
+    }
+
+    private void changeIndices() {
+        Node<T> current = head;
+        int index = 0;
         while (current != null) {
             current.index = index;
             index++;
@@ -63,11 +78,10 @@ public class DoublyLinkedList<T> {
         list.add(2);
         list.add(3);
         list.add(4);
-        list.removeAt(4);
-
-        System.out.println(list.tail.value);
-        System.out.println(list.head.next.next.value);
-        System.out.println(list.tail.previous.value);
+        list.removeAt(1);
+        for (int i = 0; i < list.size; i++) {
+            System.out.println(list.get(i));
+        }
 
     }
 }
