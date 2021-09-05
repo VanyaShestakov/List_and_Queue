@@ -1,6 +1,6 @@
 package RingList;
 
-class  Node<T> {
+public class  Node<T> {
     T value;
     int index;
     Node<T> next;

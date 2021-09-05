@@ -113,6 +113,8 @@ public class List<T> {
         return current.value;
     }
 
+
+
     public int indexOf(T value) {
         Node<T> current = head;
         while (current != null && !current.value.equals(value)) {
